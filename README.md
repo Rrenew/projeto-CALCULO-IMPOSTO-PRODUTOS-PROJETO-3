@@ -17,4 +17,18 @@ Sistema web para cadastro de produtos com cálculo automático de impostos.
 - Remoção de produtos
 - Layout responsivo
 
-## Estrutura
+
+## Como executar
+
+Abra o arquivo `index.html` no navegador.
+
+## Regras de negócio
+
+- Campos obrigatórios não podem ficar vazios
+- Produtos tipo 1 são isentos de imposto
+- Cálculos atualizados em tempo real
+- Dados mantidos apenas em memória
+
+## Autor
+
+[Leonardo, Frank Eliel, Moyses Ribeiro]
