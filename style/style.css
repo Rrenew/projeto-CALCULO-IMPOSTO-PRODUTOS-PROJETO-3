@@ -51,6 +51,10 @@ body
     transition: background-color 0.3s ease;
 }
 
+#produtoForm label:hover {
+    background-color: #e0e0e0;
+}
+
 #produtoForm .form-group, #produtoForm .form-row
 {
     margin-bottom: 16px;
