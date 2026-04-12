@@ -61,7 +61,6 @@ function renderizar() {
  const listDiv = document.getElementById("produtoList");
  listDiv.innerHTML = "";
   
-
  if(produtos.length === 0){
     listDiv.innerHTML = "<p>Nenhum produto adicionado.</p>";
     return;
@@ -85,6 +84,20 @@ function renderizar() {
     });
     tabela += '</tbody></table>';
     listDiv.innerHTML = tabela;
+}
+
+function atualizarQuantidade(input) {
+    const idP = parseInt(input.dataset.id);
+    const novaQ = parseInt(input.value);
+    if(novaQ <= 0){
+        input.value = 1;
+        return;
+    } 
+    const produto = produtos.find(p => p.id === idP);
+    if (produto) {
+        produto.quantidade = novaQ;
+        renderizar();
+    }
 }
 
 function removerProduto(id) {
