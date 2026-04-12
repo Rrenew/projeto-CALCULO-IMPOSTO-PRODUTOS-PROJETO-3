@@ -37,6 +37,12 @@ body
     border : 1px solid #ccc;
     border-radius: 6px;
 }
+
+
+#produtoForm input[type="radio"] {
+    margin-right: 10px;
+}
+
 #produtoForm .form-group, #produtoForm .form-row
 {
     margin-bottom: 16px;
