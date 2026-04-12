@@ -82,7 +82,9 @@ table {
 table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
+table tr.isento {
+    background-color: #e6f7e6;
+}
 table th, table td {
     padding: 12px;
     text-align: left;
