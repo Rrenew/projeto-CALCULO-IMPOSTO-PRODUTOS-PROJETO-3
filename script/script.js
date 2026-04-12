@@ -33,4 +33,33 @@ function addProduto() {
     renderizar();
 }   
 
+function renderizar() {
+ const listDiv = document.getElementById("produtosList");
+ listDiv.innerHTML = "";
+  
+
+ if(produtos.length === 0){
+    listDiv.innerHTML = "<p>Nenhum produto adicionado.</p>";
+    return;
+
+ }
+
+ let tabela = '<table><thead><tr><th>Produto</th><th>V. Unitário</th><th>Qtd</th><th>V. Total</th><th>Imposto</th><th>Final</th><th>Ação</th></tr></thead><tbody>';
+    produtos.forEach((produto) => {
+        const total = produto.quantidade * produto.valorUnitario;
+        const imposto = (total * impostos[produto.tipoProduto]) / 100;
+        const valorFinal = total + imposto;
+        tabela += `<tr>
+            <td>${produto.produto}</td>
+            <td>${produto.valorUnitario.toFixed(2)}</td>
+            <td><input type="number" value="${produto.quantidade}" min="1">
+            <td>${total.toFixed(2)}</td>
+            <td>${imposto.toFixed(2)}</td>
+            <td>${valorFinal.toFixed(2)}</td>
+            <td><button onclick="removerProduto(${produto.id})">Remover</button></td>
+        </tr>`;
+    });
+    tabela += '</tbody></table>';
+    listDiv.innerHTML = tabela;
+}
 
