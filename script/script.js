@@ -74,9 +74,9 @@ function renderizar() {
             <td>${produto.produto}</td>
             <td>${produto.valorUnitario.toFixed(2)}</td>
             <td><input type="number" value="${produto.quantidade}" min="1" data-id="${produto.id}" onchange="atualizarQuantidade(this)"></td>
-            <td>${calcularImp.total.toFixed(2)}</td>
-            <td>${calcularImp.imposto.toFixed(2)}</td>
-            <td>${calcularImp.valorFinal.toFixed(2)}</td>
+            <td>${calculos.total.toFixed(2)}</td>
+            <td>${calculos.imposto.toFixed(2)}</td>
+            <td>${calculos.valorFinal.toFixed(2)}</td>
             <td><button onclick="removerProduto(${produto.id})">Remover</button></td>
         </tr>`;
     });
