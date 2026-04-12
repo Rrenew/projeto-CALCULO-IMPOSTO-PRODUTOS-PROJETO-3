@@ -71,3 +71,5 @@ function removerProduto(id) {
     }
 }
 
+document.getElementById("produtoForm").addEventListener("submit", addProduto);
+
