@@ -54,6 +54,11 @@ body
     font-size: 18px;
     color: #333;
 }
+#produtoForm textarea
+{
+    resize: vertical;
+    min-height: 100px;
+}
 #produtoForm label {
     display: inline-block;
     padding: 5px;
@@ -114,4 +119,14 @@ table th, table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ccc;
+}
+.listagem-section 
+{
+    padding: 20px;
+}
+.listagem-section p 
+{
+    margin: 0;
+    font-size: 1rem;
+    color: #475569;
 }
