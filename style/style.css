@@ -44,8 +44,15 @@ body
     color: #333;
     font-size: 1rem;
 }
-#produtoForm input[type="radio"] {
-    margin-right: 10px;
+#produtoForm .form-group
+{
+    margin-bottom: 20px;
+}
+.form-section h1
+{
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
 }
 #produtoForm label {
     display: inline-block;
