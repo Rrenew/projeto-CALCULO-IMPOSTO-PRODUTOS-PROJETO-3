@@ -102,11 +102,14 @@ function atualizarQuantidade(input) {
 }
 
 function removerProduto(id) {
+    const confirmarR = confirm("Tem certeza que deseja remover este produto?");
+   if(confirmarR){ 
     const index = produtos.findIndex(produto => produto.id === id);
     if (index !== -1) {
         produtos.splice(index, 1);
         renderizar();
     }
+  }
 }
 
 document.getElementById("produtoForm").addEventListener("submit", addProduto);
