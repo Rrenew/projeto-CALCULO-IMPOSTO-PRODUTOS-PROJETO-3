@@ -32,17 +32,18 @@ body
     margin-bottom: 20px;
     border: 1px solid #ccc;
 }
-.produto-lista{
-    margin-top: 14px;
+#produtoForm .form-group
+{
+    padding: 20px;
 }
-#produtoForm input, #produtoForm select, #produtoForm textarea
+#produtoForm input[type="text"], #produtoForm input[type="number"], #produtoForm select, #produtoForm textarea
 {
     padding: 10px 12px;
     border : 1px solid #ccc;
     border-radius: 6px;
+    color: #333;
+    font-size: 1rem;
 }
-
-
 #produtoForm input[type="radio"] {
     margin-right: 10px;
 }
