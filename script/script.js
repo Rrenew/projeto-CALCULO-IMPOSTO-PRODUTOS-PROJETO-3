@@ -85,7 +85,7 @@ function renderizar() {
     tabela += '</tbody></table>';
     listDiv.innerHTML = tabela;
 }
-
+// está sendo passado this (o elemento HTML) para a função. Dentro da função, acessa data-id para identificar qual produto mexeu
 function atualizarQuantidade(input) {
     const idP = parseInt(input.dataset.id);
     const novaQ = parseInt(input.value);
