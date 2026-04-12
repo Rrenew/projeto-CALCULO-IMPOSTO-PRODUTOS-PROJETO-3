@@ -40,7 +40,7 @@ function addProduto(e) {
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
 
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
-        alert("preencha todos os campos corretamente.");
+        alert("Preencha todos os campos corretamente.");
         return;
     }
     const novproduto = {
@@ -55,6 +55,18 @@ function addProduto(e) {
     produtos.push(novproduto);
     document.getElementById("produtoForm").reset();
     renderizar();
+
+    //So uma suestão
+    mostrarToast("O produto foi adicionado");
+
+    function mostrarToast(mensagem) {
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
+    toast.textContent = mensagem;
+    }
 
     const toast = document.getElementById("toast");
     toast.style.display = "block";
