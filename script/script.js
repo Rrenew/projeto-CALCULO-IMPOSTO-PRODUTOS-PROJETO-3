@@ -56,7 +56,11 @@ function addProduto(e) {
     document.getElementById("produtoForm").reset();
     renderizar();
 
-    alert("Produto adicionado com sucesso!");
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
 }   
 
 function renderizar() {
