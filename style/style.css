@@ -69,7 +69,9 @@ body
     background: #fff;
     
 }
-
+table th {
+    background-color: #f1f1f1;
+}
 
 table {
     width: 100%;
