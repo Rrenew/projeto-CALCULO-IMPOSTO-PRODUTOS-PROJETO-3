@@ -89,6 +89,7 @@ function atualizarQuantidade(input) {
     const novaQ = parseInt(input.value);
     if(novaQ <= 0){
         input.value = 1;
+        alert("A quantidade deve ser pelo menos 1.");
         return;
     } 
     const produto = produtos.find(p => p.id === idP);
