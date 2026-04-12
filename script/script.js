@@ -7,6 +7,30 @@ const impostos = {
  5: 17,
 };
 
+function calcularImp(quantidade, valorUnitario, tipoProduto) {
+    const total = quantidade * valorUnitario;
+    const percentualImp = impostos[tipoProduto];
+    const imposto = (total * percentualImp) / 100;
+    const valorFinal = total + imposto;
+    return {
+        total: total,
+        imposto: imposto,
+        valorFinal: valorFinal,
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 function addProduto(e) { 
     e.preventDefault();
     const nome = document.getElementById("produto").value;
