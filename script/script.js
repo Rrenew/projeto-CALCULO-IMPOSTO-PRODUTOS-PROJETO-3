@@ -7,11 +7,11 @@ const impostos = {
  5: 17,
 };
 
-function addProduto() { 
+function addProduto(e) { 
     e.preventDefault();
     const nome = document.getElementById("produto").value;
     const descricao = document.getElementById("caracteristicas").value;
-    const preco = parseFloat(document.getElementById("preco").value);
+    const preco = parseFloat(document.getElementById("valorUnitario").value);
     const medida = document.getElementById("unidade").value;
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
 
@@ -34,7 +34,7 @@ function addProduto() {
 }   
 
 function renderizar() {
- const listDiv = document.getElementById("produtosList");
+ const listDiv = document.getElementById("produtoList");
  listDiv.innerHTML = "";
   
 
