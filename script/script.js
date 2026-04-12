@@ -19,7 +19,8 @@ function calcularImp(quantidade, valorUnitario, tipoProduto) {
     }
 }
 
-
+// so uma cosinha mais visual
+function formatarValor(valor) {return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });}
 
 
 
@@ -56,7 +57,7 @@ function addProduto(e) {
     document.getElementById("produtoForm").reset();
     renderizar();
 
-    //So uma suestão
+    //So uma sugestão
     mostrarToast("O produto foi adicionado");
 
     function mostrarToast(mensagem) {
@@ -98,7 +99,8 @@ function renderizar() {
             <td><button onclick="removerProduto(${produto.id})">Remover</button></td>
         </tr>`;
     });
-    tabela += '</tbody></table>';
+    // a funçao era para isso :)
+    tabela += '</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(valorFinal)}</td></tr></tfoot></table>';
     listDiv.innerHTML = tabela;
 }
 // está sendo passado this (o elemento HTML) para a função. Dentro da função, acessa data-id para identificar qual produto mexeu
