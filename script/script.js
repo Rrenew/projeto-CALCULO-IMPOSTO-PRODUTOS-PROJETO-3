@@ -76,7 +76,7 @@ function renderizar() {
         tabela += `<tr>
             <td>${produto.produto}</td>
             <td>${produto.valorUnitario.toFixed(2)}</td>
-            <td><input type="number" value="${produto.quantidade}" min="1">
+            <td><input type="number" value="${produto.quantidade}" min="1" data-id="${produto.id}" onchange="atualizarQuantidade(this)"></td>
             <td>${total.toFixed(2)}</td>
             <td>${imposto.toFixed(2)}</td>
             <td>${valorFinal.toFixed(2)}</td>
