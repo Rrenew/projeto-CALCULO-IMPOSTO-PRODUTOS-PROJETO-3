@@ -63,3 +63,11 @@ function renderizar() {
     listDiv.innerHTML = tabela;
 }
 
+function removerProduto(id) {
+    const index = produtos.findIndex(produto => produto.id === id);
+    if (index !== -1) {
+        produtos.splice(index, 1);
+        renderizar();
+    }
+}
+
