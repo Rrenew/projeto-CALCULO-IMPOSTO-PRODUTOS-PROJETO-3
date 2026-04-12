@@ -55,6 +55,8 @@ function addProduto(e) {
     produtos.push(novproduto);
     document.getElementById("produtoForm").reset();
     renderizar();
+
+    alert("Produto adicionado com sucesso!");
 }   
 
 function renderizar() {
