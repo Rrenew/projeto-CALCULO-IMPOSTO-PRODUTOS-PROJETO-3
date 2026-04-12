@@ -1,3 +1,53 @@
-body{
+body
+{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: #f0f0f0;
+}
+#produtoForm
+{
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 24px;
+    background: #ccc;
+}
+.container
+{
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.listagem-section
+{
+    background: #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+.produto-lista{
+    margin-top: 14px;
+}
+#produtoForm input, #produtoForm select, #produtoForm textarea
+{
+    padding: 10px 12px;
+    border : 1px solid #ccc;
+    border-radius: 6px;
+}
+#produtoForm .form-group, #produtoForm .form-row
+{
+    margin-bottom: 16px;
+}
+#produtoForm button
+{
+    display: inline-block;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #fff;
     
 }
