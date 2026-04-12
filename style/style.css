@@ -69,6 +69,18 @@ body
     background: #fff;
     
 }
+#toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    border-radius: 5px;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 table th {
     background-color: #f1f1f1;
 }
