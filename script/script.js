@@ -43,7 +43,7 @@ function addProduto(e) {
         alert("preencha todos os campos corretamente.");
         return;
     }
-    const Novproduto = {
+    const novproduto = {
     id: Date.now(),
     produto: nome,
     caracteristicas: descricao,
@@ -52,7 +52,7 @@ function addProduto(e) {
     tipoProduto: parseInt(tipo),
     quantidade: 1    
     };
-    produtos.push(Novproduto);
+    produtos.push(novproduto);
     document.getElementById("produtoForm").reset();
     renderizar();
 }   
