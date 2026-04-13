@@ -4,6 +4,10 @@ body
     align-items: center;
     display: flex;
     background: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    margin: 0;
 }
 #produtoForm
 {
@@ -20,27 +24,40 @@ body
     padding: 20px;
     box-sizing: border-box;
 }
-.listagem-section
+.listagem-section, .form-section
 {
     background: #ccc;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 20px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
 }
-.produto-lista{
-    margin-top: 14px;
+#produtoForm .form-group
+{
+    padding: 20px;
 }
-#produtoForm input, #produtoForm select, #produtoForm textarea
+#produtoForm input[type="text"], #produtoForm input[type="number"], #produtoForm select, #produtoForm textarea
 {
     padding: 10px 12px;
     border : 1px solid #ccc;
     border-radius: 6px;
+    color: #333;
+    font-size: 1rem;
 }
-
-
-#produtoForm input[type="radio"] {
-    margin-right: 10px;
+#produtoForm .form-group
+{
+    margin-bottom: 20px;
+}
+.form-section h1
+{
+    margin-top: 0;
+    font-size: 18px;
+    color: #333;
+}
+#produtoForm textarea
+{
+    resize: vertical;
+    min-height: 100px;
 }
 #produtoForm label {
     display: inline-block;
@@ -102,4 +119,14 @@ table th, table td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ccc;
+}
+.listagem-section 
+{
+    padding: 20px;
+}
+.listagem-section p 
+{
+    margin: 0;
+    font-size: 1rem;
+    color: #475569;
 }

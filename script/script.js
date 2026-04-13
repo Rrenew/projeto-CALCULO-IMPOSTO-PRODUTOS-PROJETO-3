@@ -19,7 +19,8 @@ function calcularImp(quantidade, valorUnitario, tipoProduto) {
     }
 }
 
-
+// so uma cosinha mais visual
+function formatarValor(valor) {return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });}
 
 
 
@@ -40,7 +41,7 @@ function addProduto(e) {
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
 
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
-        alert("preencha todos os campos corretamente.");
+        alert("Preencha todos os campos corretamente.");
         return;
     }
     const novproduto = {
@@ -55,6 +56,18 @@ function addProduto(e) {
     produtos.push(novproduto);
     document.getElementById("produtoForm").reset();
     renderizar();
+
+    //So uma sugestão
+    mostrarToast("O produto foi adicionado");
+
+    function mostrarToast(mensagem) {
+    const toast = document.getElementById("toast");
+    toast.style.display = "block";
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 3000);
+    toast.textContent = mensagem;
+    }
 
     const toast = document.getElementById("toast");
     toast.style.display = "block";
@@ -86,7 +99,8 @@ function renderizar() {
             <td><button onclick="removerProduto(${produto.id})">Remover</button></td>
         </tr>`;
     });
-    tabela += '</tbody></table>';
+    // a funçao era para isso :)
+    tabela += '</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(valorFinal)}</td></tr></tfoot></table>';
     listDiv.innerHTML = tabela;
 }
 // está sendo passado this (o elemento HTML) para a função. Dentro da função, acessa data-id para identificar qual produto mexeu
