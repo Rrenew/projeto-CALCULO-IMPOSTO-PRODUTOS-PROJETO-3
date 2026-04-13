@@ -100,7 +100,7 @@ function renderizar() {
         </tr>`;
     });
     // a funçao era para isso :)
-    tabela += '</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(valorFinal)}</td></tr></tfoot></table>';
+    tabela += `</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(valorFinal)}</td></tr></tfoot></table>`;
     listDiv.innerHTML = tabela;
 }
 // está sendo passado this (o elemento HTML) para a função. Dentro da função, acessa data-id para identificar qual produto mexeu
