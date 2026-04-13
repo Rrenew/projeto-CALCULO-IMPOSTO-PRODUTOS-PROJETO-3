@@ -86,7 +86,9 @@ function renderizar() {
 
  }
 
+ 
  let tabela = '<table><thead><tr><th>Produto</th><th>V. Unitário</th><th>Qtd</th><th>V. Total</th><th>Imposto</th><th>Final</th><th>Ação</th></tr></thead><tbody>';
+   let totalGeral = 0;
     produtos.forEach((produto) => {
        const calculos = calcularImp(produto.quantidade, produto.valorUnitario, produto.tipoProduto);
        totalGeral += calculos.valorFinal;
@@ -101,7 +103,7 @@ function renderizar() {
         </tr>`;
     });
     // a funçao era para isso :)
-    tabela += `</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(valorFinal)}</td></tr></tfoot></table>`;
+    tabela += `</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(totalGeral)}</td></tr></tfoot></table>`;
     listDiv.innerHTML = tabela;
 }
 // está sendo passado this (o elemento HTML) para a função. Dentro da função, acessa data-id para identificar qual produto mexeu
