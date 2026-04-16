@@ -73,7 +73,12 @@ max-width: 600px;
     border-radius: 5px;
     cursor: pointer;
     transition: 0.2s;
+
 }
+#produtoForm label{
+ background-color: #dbeafe;
+}
+
 
 #produtoForm label:hover {
     background-color: #dbeafe;
