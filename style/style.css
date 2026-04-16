@@ -79,12 +79,18 @@ max-width: 600px;
 
 }
 #produtoForm label{
- background-color: #dbeafe;
+display: inline-block;
+padding: 5px;
+background-color: #334155;
+color: #e2e8f0;
+border-radius: 5px;
+cursor: pointer;
+transition: 0.2s;
 }
 
 
 #produtoForm label:hover {
-    background-color: #dbeafe;
+    background-color: #475569;
 }
 
 #produtoForm .form-group, #produtoForm .form-row
