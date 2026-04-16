@@ -90,8 +90,10 @@ max-width: 600px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    background: #fff;
-    
+    background: #4CAF50;
+    color: white;
+    font-weight:bold;
+    transition: 0.3s;
 }
 h1{
     text-align: center;
