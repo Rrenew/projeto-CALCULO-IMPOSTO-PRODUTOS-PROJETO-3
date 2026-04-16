@@ -95,6 +95,11 @@ max-width: 600px;
     font-weight:bold;
     transition: 0.3s;
 }
+#produtoForm button:hover{
+    background: #43a047;
+    transform: translateY(-1px);
+}
+
 h1{
     text-align: center;
     margin-bottom: 20px;
