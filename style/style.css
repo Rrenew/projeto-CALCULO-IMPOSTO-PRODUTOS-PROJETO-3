@@ -117,6 +117,7 @@ transition: 0.2s;
 h1{
     text-align: center;
     margin-bottom: 20px;
+    color: #f8fafc;
 }
 #produtoForm input[type="text"],
 #produtoForm input[type=number],
