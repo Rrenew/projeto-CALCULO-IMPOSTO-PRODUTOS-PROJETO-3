@@ -135,6 +135,9 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background:#fff;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 table tr:nth-child(even) {
@@ -146,8 +149,10 @@ table tr.isento {
 }
 table th, table td {
     padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #eee;
+}
+table th{
+ background-color:#f1f1f1 ;
 }
 .listagem-section 
 {
