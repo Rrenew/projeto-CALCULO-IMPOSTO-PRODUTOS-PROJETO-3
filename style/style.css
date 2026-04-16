@@ -112,11 +112,16 @@ h1{
     text-align: center;
     margin-bottom: 20px;
 }
-#produtoForm input:focus,
-#produtoForm select:focus,
-#produtoForm textarea:focus {
-    transition: all 0.2s ease;
-    border-radius: 8px;
+#produtoForm input[type="text"],
+#produtoForm input[type=number],
+#produtoForm select,
+#produtoForm textarea {
+   padding: 10px 12px;
+   border: 1px solid #334155;
+   border-radius: 6px;
+   color: #e2e8f0;
+   background: #0f172a ;
+   font-size: 1rem;
 }
 
 
