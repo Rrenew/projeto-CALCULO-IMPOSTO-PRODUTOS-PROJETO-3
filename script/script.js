@@ -62,18 +62,18 @@ function addProduto(e) {
 
     function mostrarToast(mensagem) {
     const toast = document.getElementById("toast");
-    toast.style.display = "block";
-    setTimeout(() => {
-        toast.style.display = "none";
-    }, 3000);
     toast.textContent = mensagem;
-    }
-
-    const toast = document.getElementById("toast");
     toast.style.display = "block";
+    toast.style.opacity = "1";
+    toast.style.transform = "translateY(0)";
     setTimeout(() => {
-        toast.style.display = "none";
-    }, 3000);
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(-10px)";
+        setTimeout(() => {
+            toast.style.display = "none";
+        }, 300);
+    }, 2700);
+    }
 }   
 
 function renderizar() {
