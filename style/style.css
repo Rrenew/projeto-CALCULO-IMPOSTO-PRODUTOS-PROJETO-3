@@ -57,13 +57,16 @@ h1{
 {
     padding: 20px;
 }
-#produtoForm input[type="text"], #produtoForm input[type="number"], #produtoForm select, #produtoForm textarea
-{
-    padding: 10px 12px;
-    border : 1px solid #ccc;
-    border-radius: 6px;
-    color: #333;
-    font-size: 1rem;
+#produtoForm input[type="text"],
+#produtoForm input[type=number],
+#produtoForm select,
+#produtoForm textarea {
+   padding: 10px 12px;
+   border: 1px solid #334155;
+   border-radius: 6px;
+   color: #e2e8f0;
+   background: #0f172a ;
+   font-size: 1rem;
 }
 #produtoForm .form-group
 {
