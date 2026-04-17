@@ -38,6 +38,13 @@ h1{
     padding: 20px;
     box-sizing: border-box;
 }
+#produtoForm input:focus,
+#produtoForm select:focus,
+#produtoForm textarea:focus {
+    transition: all 0.2s ease;
+    border-radius: 8px;
+}
+
 .listagem-section, .form-section
 {
     background: #ccc;
