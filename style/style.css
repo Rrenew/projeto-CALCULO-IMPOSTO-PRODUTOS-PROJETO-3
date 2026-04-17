@@ -140,6 +140,9 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background:#fff;
+    border-radius: 8px;
+    overflow: hidden
 }
 
 table tr:nth-child(even) {
