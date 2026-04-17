@@ -98,9 +98,6 @@ h1{
      cursor: pointer;
     transition: 0.2s;
 }
-#produtoForm label{
- background-color: #dbeafe;
-}
 
 #produtoForm label:hover {
     background-color: #475569;
