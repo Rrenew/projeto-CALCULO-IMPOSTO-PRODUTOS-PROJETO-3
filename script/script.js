@@ -89,6 +89,7 @@ function renderizar() {
  let tabela = '<table><thead><tr><th>Produto</th><th>V. Unitário</th><th>Qtd</th><th>V. Total</th><th>Imposto</th><th>Final</th><th>Ação</th></tr></thead><tbody>';
     produtos.forEach((produto) => {
        const calculos = calcularImp(produto.quantidade, produto.valorUnitario, produto.tipoProduto);
+       totalGeral += calculos.valorFinal;
         tabela += `<tr>
             <td>${produto.produto}</td>
             <td>${produto.valorUnitario.toFixed(2)}</td>
