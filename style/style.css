@@ -17,6 +17,11 @@ body
     margin-bottom: 24px;
     background: #f4f7f8;
 }
+section{
+    width: 100%;
+    max-width: 600px ;
+}
+
 .container
 {
     width: 100%;
