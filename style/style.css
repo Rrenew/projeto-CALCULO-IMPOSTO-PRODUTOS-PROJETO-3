@@ -112,6 +112,11 @@ h1{
     transition: 0.3s;
     
 }
+
+#produtoForm button:hover{
+    background: #43a047;
+    transform: translateY(-1px);
+}
 #toast {
     position: fixed;
     top: 20px;
