@@ -43,6 +43,9 @@ h1{
 #produtoForm textarea:focus {
     transition: all 0.2s ease;
     border-radius: 8px;
+    border-color: #22c55e;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+    outline: none;
 }
 
 .listagem-section, .form-section
