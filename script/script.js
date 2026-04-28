@@ -19,26 +19,47 @@ function calcularImp(quantidade, valorUnitario, tipoProduto) {
     }
 }
 
+const API_URL ="http://localhost:5277/api/v1/novprodutos";
+async function enviarproduto(prouto){
+    try {
+        const dados = {
+            produto: prouto.produto,
+            caracteristica: prouto.caracteristica,
+            valorUnitario: prouto.valorUnitario,
+            unidade: prouto.unidade,
+            tipoProduto: prouto.tipoProduto
+        };
+
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        });
+        if (response.ok) { console.log("produto enviado", dados); return true;}
+        else { console.error("erro ao enviar", response.statusText); return false;}
+    } 
+    catch (error) {console.error("erro na requisição", error); return false;}
+        
+}
+
+
 // so uma cosinha mais visual
 function formatarValor(valor) {return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });}
 
-
-
-
-
-
-
-
-
-
-
-function addProduto(e) { 
+async function addProduto(e) { 
     e.preventDefault();
     const nome = document.getElementById("produto").value;
     const descricao = document.getElementById("caracteristicas").value;
     const preco = parseFloat(document.getElementById("valorUnitario").value);
     const medida = document.getElementById("unidade").value;
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
+    const btn = e.target.querySelector("button");
+    const originalText = btn.textContent;
+
+    btn.disabled = true;
+    btn.textContent = "Enviando";
 
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
         alert("Preencha todos os campos corretamente.");
@@ -53,6 +74,23 @@ function addProduto(e) {
     tipoProduto: parseInt(tipo),
     quantidade: 1    
     };
+    
+    
+    
+    const enviadoComSucesso = await enviarproduto(novproduto);
+
+    btn.disabled = false;
+    btn.textContent = originalText;
+    
+    if (enviadoComSucesso) {
+        produtos.push(novproduto);
+        document.getElementById("produtoForm").reset();
+        renderizar();
+        mostrarToast("Produto salvo no banco com sucesso!");
+    } else {
+        alert("Erro ao salvar no banco de dados. Verifique se a API está rodando.");
+    }
+    
     produtos.push(novproduto);
     document.getElementById("produtoForm").reset();
     renderizar();
