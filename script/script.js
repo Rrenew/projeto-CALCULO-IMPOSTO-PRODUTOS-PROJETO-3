@@ -55,6 +55,11 @@ async function addProduto(e) {
     const preco = parseFloat(document.getElementById("valorUnitario").value);
     const medida = document.getElementById("unidade").value;
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
+    const btn = e.target.querySelector("button");
+    const originalText = btn.textContent;
+
+    btn.disabled = true;
+    btn.textContent = "Enviando";
 
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
         alert("Preencha todos os campos corretamente.");
@@ -69,8 +74,14 @@ async function addProduto(e) {
     tipoProduto: parseInt(tipo),
     quantidade: 1    
     };
+    
+    
+    
     const enviadoComSucesso = await enviarproduto(novproduto);
 
+    btn.disabled = false;
+    btn.textContent = originalText;
+    
     if (enviadoComSucesso) {
         produtos.push(novproduto);
         document.getElementById("produtoForm").reset();
