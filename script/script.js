@@ -297,5 +297,23 @@ async function confirmarDeletar(id) {
 }
 
 
+async function inicializar() {
+    const produtosDoBanco = await listarProdutos();
+    produtosDoBanco.forEach(p => {
+        produtos.push({
+            id: p.id ?? p.produtoId ?? Date.now(),
+            produto: p.produto,
+            caracteristicas: p.caracteristicas,
+            valorUnitario: p.valorUnitario,
+            unidade: p.unidade,
+            tipoProduto: p.tipoProduto,
+            quantidade: p.quantidade ?? 1,
+            oculto: false
+        });
+    });
+    renderizar();
+}
+
+
 document.getElementById("produtoForm").addEventListener("submit", addProduto);
 
