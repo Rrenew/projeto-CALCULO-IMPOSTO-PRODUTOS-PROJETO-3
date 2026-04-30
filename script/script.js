@@ -296,6 +296,23 @@ async function confirmarDeletar(id) {
     }
 }
 
+function editarProduto(id) {
+    const produto = produtos.find(p => p.id === id);
+    if (!produto) return;
+ 
+    document.getElementById("produto").value = produto.produto;
+    document.getElementById("caracteristicas").value = produto.caracteristicas;
+    document.getElementById("valorUnitario").value = produto.valorUnitario;
+    document.getElementById("unidade").value = produto.unidade;
+ 
+    const radio = document.querySelector(`input[name="tipoProduto"][value="${produto.tipoProduto}"]`);
+    if (radio) radio.checked = true;
+ 
+    produtoEditandoId = produto.id;
+    document.querySelector("#produtoForm button[type='submit']").textContent = "Salvar Alterações";
+    document.getElementById("produtoForm").scrollIntoView({ behavior: "smooth" });
+}
+
 
 async function inicializar() {
     const produtosDoBanco = await listarProdutos();
@@ -316,4 +333,4 @@ async function inicializar() {
 
 
 document.getElementById("produtoForm").addEventListener("submit", addProduto);
-
+inicializar();
