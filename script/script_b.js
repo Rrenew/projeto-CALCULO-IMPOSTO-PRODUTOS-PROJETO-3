@@ -36,6 +36,8 @@ async function listarProdutos(){
 
     catch (error) {console.error("erro na requisição", error); return [];}
 }
+// por favor tome cuidado ao trabalhar com isso, já que pode da uma merda se não for feito minuciosamente.
+// OBS: no nosso caso talvez nao de muito problema.
 async function deletarProduto(id){
     try{
         const confirmacao= confirm("Tem certeza que deseja deletar este produto?");
@@ -55,6 +57,38 @@ async function deletarProduto(id){
             return true;
         } else {
             console.error("erro ao deletar", response.statusText);
+            return false;
+        }
+    }
+
+    catch (error) {
+        console.error("erro na requisição", error);
+        return false;
+    }
+}
+//mesma coisa do delete ok, tome cuidado.
+async function alterarProduto(id, produtoAtualizado) {
+    try{
+        const dados= {
+            produtoId: id,
+            produto: produtoAtualizado.produto,
+            caracteristicas: produtoAtualizado.caracteristicas,
+            valorUnitario: produtoAtualizado.valorUnitario,
+            unidade: produtoAtualizado.unidade,
+            tipoProduto: produtoAtualizado.tipoProduto
+        };
+        const response= await fetch('${API_URL}/${id}',{
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        });
+        if(response.ok){
+            console.log("produto alterado ID:", id);
+            return true;
+        } else {
+            console.error("erro ao alterar", response.statusText);
             return false;
         }
     }
