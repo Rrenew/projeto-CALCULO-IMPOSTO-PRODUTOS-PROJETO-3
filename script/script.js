@@ -286,6 +286,16 @@ function ocultarProduto(id) {
     }
 }
 
+async function confirmarDeletar(id) {
+    const deletadoComSucesso = await deletarProduto(id);
+    if (deletadoComSucesso) {
+        const index = produtos.findIndex(p => p.id === id);
+        if (index !== -1) produtos.splice(index, 1);
+        renderizar();
+        mostrarToast("Produto deletado do banco com sucesso!");
+    }
+}
+
 
 document.getElementById("produtoForm").addEventListener("submit", addProduto);
 
