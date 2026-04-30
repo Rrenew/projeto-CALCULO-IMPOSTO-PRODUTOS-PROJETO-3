@@ -168,14 +168,36 @@ async function addProduto(e) {
     
     const AlteradoCsucesso = await alterarProduto(produtoEditandoId, produtoAtualizado);
 
+    btn.disabled = false;
+    btn.textContent = originalText;
+
+    if (AlteradoCsucesso) {
+        const index = produtos.findIndex(p => p.id === produtoEditandoId);
+        if (index !== -1) {
+            produtos[index] = {...produtos[index], ...produtoAtualizado};
+        }
+        produtoEditandoId = null;
+        document.getElementById("produtoForm").reset();
+        renderizar();
+        mostrarToast("Produto alterado com sucesso!");
+    } else {
+        alert("Erro ao alterar o produto. Verifique se a API está rodando.");
+    }
+    return;
+    }
+
+
+
     const novproduto = {
-    id: Date.now(),
-    produto: nome,
-    caracteristicas: descricao,
-    valorUnitario: preco,
-    unidade: medida,
-    tipoProduto: parseInt(tipo),
-    quantidade: 1    
+        id: Date.now(),
+        produto: nome,
+        caracteristicas: descricao,
+        valorUnitario: preco,
+        unidade: medida,
+        tipoProduto: parseInt(tipo),
+        quantidade: 1,
+        oculto: false
+  
     };
     
     
@@ -194,32 +216,33 @@ async function addProduto(e) {
     } else {
         alert("Erro ao salvar no banco de dados. Verifique se a API está rodando.");
     }
-    
-    produtos.push(novproduto);
-    document.getElementById("produtoForm").reset();
-    renderizar();
 
-    //So uma sugestão
-    mostrarToast("O produto foi adicionado");
+
+
+
+    
+   
 
     
 }   
 
 function renderizar() {
- const listDiv = document.getElementById("produtoList");
- listDiv.innerHTML = "";
+    const listDiv = document.getElementById("produtoList");
+    listDiv.innerHTML = "";
+ 
+    const visiveis = produtos.filter(p => !p.oculto);
   
- if(produtos.length === 0){
-    listDiv.innerHTML = "<p>Nenhum produto adicionado.</p>";
-    return;
+    if(visiveis.length === 0){
+        listDiv.innerHTML = "<p>Nenhum produto adicionado.</p>";
+        return;
+    }
 
- }
 
  let tabela = '<table><thead><tr><th>Produto</th><th>V. Unitário</th><th>Qtd</th><th>V. Total</th><th>Imposto</th><th>Final</th><th>Ação</th></tr></thead><tbody>';
     let totalGeral = 0;
-   produtos.forEach((produto) => {
-       const calculos = calcularImp(produto.quantidade, produto.valorUnitario, produto.tipoProduto);
-       totalGeral += calculos.valorFinal;
+   visiveis.forEach((produto) => {
+        const calculos = calcularImp(produto.quantidade, produto.valorUnitario, produto.tipoProduto);
+        totalGeral += calculos.valorFinal;
         tabela += `<tr>
             <td>${produto.produto}</td>
             <td>${produto.valorUnitario.toFixed(2)}</td>
@@ -227,9 +250,14 @@ function renderizar() {
             <td>${calculos.total.toFixed(2)}</td>
             <td>${calculos.imposto.toFixed(2)}</td>
             <td>${calculos.valorFinal.toFixed(2)}</td>
-            <td><button onclick="removerProduto(${produto.id})">Remover</button></td>
+            <td>
+                <button onclick="ocultarProduto(${produto.id})">Ocultar</button>
+                <button onclick="confirmarDeletar(${produto.id})">Deletar</button>
+                <button onclick="editarProduto(${produto.id})">Alterar</button>
+            </td>
         </tr>`;
     });
+
     // a funçao era para isso :)
     tabela += `</tbody><tfoot><tr><td colspan="5">total</td><td colspan="2">${formatarValor(totalGeral)}</td></tr></tfoot></table>`;
     listDiv.innerHTML = tabela;
@@ -250,16 +278,14 @@ function atualizarQuantidade(input) {
     }
 }
 
-function removerProduto(id) {
-    const confirmarR = confirm("Tem certeza que deseja remover este produto?");
-   if(confirmarR){ 
-    const index = produtos.findIndex(produto => produto.id === id);
-    if (index !== -1) {
-        produtos.splice(index, 1);
+function ocultarProduto(id) {
+    const produto = produtos.find(p => p.id === id);
+    if (produto) {
+        produto.oculto = true;
         renderizar();
     }
-  }
 }
+
 
 document.getElementById("produtoForm").addEventListener("submit", addProduto);
 
