@@ -39,11 +39,16 @@ async function enviarproduto(prouto){
             },
             body: JSON.stringify(dados)
         });
-        if (response.ok) { console.log("produto enviado", dados); return true;}
-        else { console.error("erro ao enviar", response.statusText); return false;}
+               if (response.ok) {
+            const criado = await response.json(); 
+            console.log("produto enviado", criado);
+            return criado; 
+        }
+        else { console.error("erro ao enviar", response.statusText); return null;}
     } 
-    catch (error) {console.error("erro na requisição", error); return false;}
+    catch (error) {console.error("erro na requisição", error); return null;}
 }
+
 async function listarProdutos(){
     try {
         const response= await fetch(API_URL);
