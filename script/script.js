@@ -151,8 +151,9 @@ async function addProduto(e) {
     const preco = parseFloat(document.getElementById("valorUnitario").value);
     const medida = document.getElementById("unidade").value;
     const tipo = document.querySelector('input[name="tipoProduto"]:checked')?.value;
-    const btn = e.target.querySelector("button");
-    const originalText = btn.textContent;
+    const btn = e.target.querySelector("button[type='submit']");
+    const originalText = "Adicionar Produto";
+
 
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
         alert("Preencha todos os campos corretamente.");
@@ -194,7 +195,6 @@ async function addProduto(e) {
 
 
     const novproduto = {
-        id: Date.now(),
         produto: nome,
         caracteristicas: descricao,
         valorUnitario: preco,
@@ -206,14 +206,16 @@ async function addProduto(e) {
     };
     
     
-    const enviadoComSucesso = await enviarproduto(novproduto);
+    const criado = await enviarproduto(novproduto);
 
     btn.disabled = false;
     btn.textContent = originalText;
     
     
 
-    if (enviadoComSucesso) {
+  if (criado) {
+        // usa o datenow como id temporario
+        novproduto.id = criado.id ?? criado.produtoId ?? criado.Id ?? criado.ProdutoId;
         produtos.push(novproduto);
         document.getElementById("produtoForm").reset();
         renderizar();
@@ -221,15 +223,8 @@ async function addProduto(e) {
     } else {
         alert("Erro ao salvar no banco de dados. Verifique se a API está rodando.");
     }
-
-
-
-
-    
-   
-
-    
 }   
+ 
 
 function renderizar() {
     const listDiv = document.getElementById("produtoList");
