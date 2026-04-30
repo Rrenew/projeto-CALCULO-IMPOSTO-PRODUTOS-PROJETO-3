@@ -149,13 +149,25 @@ async function addProduto(e) {
     const btn = e.target.querySelector("button");
     const originalText = btn.textContent;
 
-    btn.disabled = true;
-    btn.textContent = "Enviando";
-
     if (!nome || !descricao || isNaN(preco) ||preco <=0 ||!medida || !tipo) {
         alert("Preencha todos os campos corretamente.");
         return;
     }
+
+    btn.disabled = true;
+    btn.textContent = "Enviando";
+
+    if(produtoEditandoId !== null){
+        const produtoAtualizado = {
+            produto: nome,
+            caracteristicas: descricao,
+            valorUnitario: preco,
+            unidade: medida,
+            tipoProduto: parseInt(tipo)
+    };      
+    
+    const AlteradoCsucesso = await alterarProduto(produtoEditandoId, produtoAtualizado);
+
     const novproduto = {
     id: Date.now(),
     produto: nome,
@@ -167,12 +179,13 @@ async function addProduto(e) {
     };
     
     
-    
     const enviadoComSucesso = await enviarproduto(novproduto);
 
     btn.disabled = false;
     btn.textContent = originalText;
     
+    
+
     if (enviadoComSucesso) {
         produtos.push(novproduto);
         document.getElementById("produtoForm").reset();
