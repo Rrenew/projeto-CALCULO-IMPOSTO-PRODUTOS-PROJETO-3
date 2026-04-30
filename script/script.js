@@ -20,7 +20,7 @@ function calcularImp(quantidade, valorUnitario, tipoProduto) {
     }
 }
 
-const API_URL = "https://localhost:5277/api/v1/NovProdutoes1";
+const API_URL = "https://localhost:7297/api/v1/NovProdutoes1";
 
 async function enviarproduto(prouto){
     try {
