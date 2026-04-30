@@ -22,10 +22,9 @@ async function enviarproduto(prouto){
     } 
     catch (error) {console.error("erro na requisição", error); return false;}
 }
-
 async function listarProdutos(){
     try {
-        const response = await fetch(API_URL);
+        const response= await fetch(API_URL);
         if (!response.ok) {
             console.error("Erro ao listar produtos", response.statusText);
             return [];
@@ -36,4 +35,32 @@ async function listarProdutos(){
     }
 
     catch (error) {console.error("erro na requisição", error); return [];}
+}
+async function deletarProduto(id){
+    try{
+        const confirmacao= confirm("Tem certeza que deseja deletar este produto?");
+        if(!confirmacao){
+            console.log("deleção cancelada");
+            return false;
+        }
+
+        const response= await fetch('${API_URL}/${id}',{
+            method: 'delete',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        if(response.ok){
+            console.log("produto deletado ID:", id);
+            return true;
+        } else {
+            console.error("erro ao deletar", response.statusText);
+            return false;
+        }
+    }
+
+    catch (error) {
+        console.error("erro na requisição", error);
+        return false;
+    }
 }
