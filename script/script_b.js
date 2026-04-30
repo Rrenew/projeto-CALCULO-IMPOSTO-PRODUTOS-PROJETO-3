@@ -1,9 +1,10 @@
-const API_URL ="http://localhost:5277/api/v1/novprodutos";
+const API_URL = "https://localhost:5277/api/v1/NovProdutoes1";
+
 async function enviarproduto(prouto){
     try {
         const dados = {
             produto: prouto.produto,
-            caracteristica: prouto.caracteristica,
+            caracteristicas: prouto.caracteristicas,
             valorUnitario: prouto.valorUnitario,
             unidade: prouto.unidade,
             tipoProduto: prouto.tipoProduto
@@ -20,5 +21,19 @@ async function enviarproduto(prouto){
         else { console.error("erro ao enviar", response.statusText); return false;}
     } 
     catch (error) {console.error("erro na requisição", error); return false;}
-        
+}
+
+async function listarProdutos(){
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+            console.error("Erro ao listar produtos", response.statusText);
+            return [];
+        }
+        const produtos= await response.json();
+        console.log("produtos listados",produtos);
+        return produtos;
+    }
+
+    catch (error) {console.error("erro na requisição", error); return [];}
 }
