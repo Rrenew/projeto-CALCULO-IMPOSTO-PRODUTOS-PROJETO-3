@@ -252,8 +252,8 @@ function renderizar() {
             <td>${calculos.valorFinal.toFixed(2)}</td>
             <td>
                 <button onclick="ocultarProduto(${produto.id})">Ocultar</button>
-                <button onclick="confirmarDeletar(${produto.id})">Deletar</button>
-                <button onclick="editarProduto(${produto.id})">Alterar</button>
+                <button data-cy="deletar" onclick="confirmarDeletar(${produto.id})">Deletar</button>
+                <button data-cy="editar" onclick="editarProduto(${produto.id})">Alterar</button>
             </td>
         </tr>`;
     });
@@ -295,6 +295,7 @@ async function confirmarDeletar(id) {
         mostrarToast("Produto deletado do banco com sucesso!");
     }
 }
+
 
 function editarProduto(id) {
     const produto = produtos.find(p => p.id === id);
